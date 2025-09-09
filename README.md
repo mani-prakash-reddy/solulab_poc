@@ -17,11 +17,15 @@ A proof of concept implementation of AI safety models for enhancing user safety 
 ```
 solulab_poc/
 ├── src/
+│   ├── bert.ipynb      # BERT model implementation
 │   ├── LR.ipynb      # Logistic Regression models implementation
 │   ├── RNNC.ipynb    # RNN Classifier implementation
 │   └── inference/
-|   
 │       └── models/    # Saved model artifacts
+│       └── app.py    # streamlit app for inference and chatbot
+│       └── requirements.txt    # Python dependencies
+│       └── Dockerfile    # Dockerfile for containerization
+│       └── main.py    # Entry point for the FastAPI application
 ├── README.md
 └── PROBLEM.md
 ```

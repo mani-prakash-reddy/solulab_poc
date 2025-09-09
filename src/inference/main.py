@@ -39,13 +39,10 @@ async def root():
 @app.post("/predict")
 async def predict_single(request: TextRequest) -> Dict[str, float]:
     try:
-        # Transform the text using the vectorizer
         X = vectorizer.transform([request.text])
         
-        # Get predictions from all models
         results = {}
         for label, model in models.items():
-            # Get probability of toxic class
             prob = model.predict_proba(X)[0][1]
             results[label] = float(prob)
         
@@ -57,15 +54,12 @@ async def predict_single(request: TextRequest) -> Dict[str, float]:
 @app.post("/predict/batch")
 async def predict_batch(request: TextBatchRequest) -> List[Dict[str, float]]:
     try:
-        # Transform the texts using the vectorizer
         X = vectorizer.transform(request.texts)
         
-        # Get predictions from all models
         results = []
         for i in range(len(request.texts)):
             text_results = {}
             for label, model in models.items():
-                # Get probability of toxic class
                 prob = model.predict_proba(X[i:i+1])[0][1]
                 text_results[label] = float(prob)
             results.append(text_results)

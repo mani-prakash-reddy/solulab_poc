@@ -1,0 +1,10 @@
+-r inference/requirements.txt
+streamlit
+transformers
+torch
+datasets
+tqdm
+pandas
+altair
+openai
+requests
